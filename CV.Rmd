@@ -1,0 +1,104 @@
+---
+name: Daniel
+surname: Maurenza de Oliveira
+position: "Biólogo | Ecologia de Paisagem"
+address: "Rio de Janeiro - SP"
+profilepic: "./img/IMG_5014.jpg"
+email: "dmaurenza@gmail.com"
+linkedin: daniel-maurenza
+github: dmaurenza
+phone: (21) 98032 7090
+orcid: 0000-0002-0304-4864
+date: "26 de Novembro de 2022"
+headcolor: 990000
+aboutme: "Biólogo, com formação acadêmica (mestrado e doutorado) em ecologia. Ao longo dos 15 anos de experiência, adquiri sólido conhecimento em análise de dados, compreensão robusta sobre os métodos científicos e no uso de linguagem de programação para responder questões de relevância ambiental."
+docname: CV_Daniel Maurenza de Oliveira
+output: vitae::awesomecv
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+library(vitae)
+library(tibble)
+library(magrittr)
+library(here)
+library(readr)
+library(glue)
+library(rlang)
+
+source(file = "r/data_pt.r")
+
+```
+
+# Experiências profissionais
+
+```{r EMPLOYMENT}
+
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Formação acadêmica
+
+```{r EDUCATION}
+
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Habilidades
+
+```{r SKILLS}
+
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+
+```
+
+# Publicações 
+
+<!-- (para lista completa de publicações, consulte meu [*ORCID*](https://orcid.org/0000-0002-0304-4864))  -->
+```{r PUBLICATIONS}
+
+publications %>%
+  detailed_entries(
+    with = type,
+    why = reference
+  )
+
+```
+
+# Certificados 
+ 
+```{r CERTIFICATIONS}
+ 
+certifications %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+
+```

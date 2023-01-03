@@ -1,0 +1,155 @@
+---
+name: Daniel
+surname: Maurenza de Oliveira
+position: "Biologist | Geodata Scientist"
+address: "Urca, Rio de Janeiro/RJ"
+profilepic: "./img/Foto5.resized.jpg"
+email: "dmaurenza@gmail.com"
+linkedin: daniel-maurenza
+phone: (21) 98032 7090
+orcid: 0000-0002-0304-4864
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 990000
+aboutme: "I am biologist, with academic research background in forest ecology. By using biological information and geospatial analysis tools, I interact databases to manipulate, consult and perform statistical analyses to guide biodiversity decision making"
+docname: CV
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+library(vitae)
+library(tibble)
+library(magrittr)
+library(here)
+library(readr)
+library(glue)
+library(rlang)
+#tinytex::install_tinytex(force = T)
+#library(tinytex)
+
+# require(xfun)
+# packages <- c('vitae'     # The CV's LaTeX Template
+#              ,'tibble'    # Data structure for tribbles
+#              ,'magrittr'  # The Pipe %>%
+#              ,'here'      # Relative File Paths
+#              ,'readr'     # Data Loading
+#              ,'tinytex'
+#              ,'glue'      # String Manipulation
+#             )
+# xfun::pkg_attach2(packages, message = FALSE)
+
+source(file = here("r","data.r"))
+
+
+# 
+ source(file = "r/data.r")
+
+```
+
+# Employment
+
+```{r EMPLOYMENT}
+
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Education
+
+```{r EDUCATION}
+
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+<!-- # Skills -->
+
+<!-- ```{r SKILLS} -->
+
+<!-- skills %>% -->
+<!--   detailed_entries( -->
+<!--     with = area, -->
+<!--     what = skills -->
+<!--   ) -->
+
+<!-- ``` -->
+
+<!-- # Honors -->
+
+<!-- ```{r HONORS} -->
+
+<!-- honors %>% -->
+<!--   detailed_entries( -->
+<!--     with = area, -->
+<!--     what = accomplishment, -->
+<!--     why = detail, -->
+<!--     when = year, -->
+<!--     where = where -->
+<!--   ) -->
+
+<!-- ``` -->
+
+<!-- # Projects -->
+
+<!-- ```{r PROJECTS} -->
+
+<!-- projects %>% -->
+<!--   detailed_entries( -->
+<!--     with = area, -->
+<!--     what = accomplishment, -->
+<!--     why = detail, -->
+<!--     when = year, -->
+<!--     where = where -->
+<!--   ) -->
+
+<!-- ``` -->
+
+<!-- # Works -->
+
+<!-- ```{r WORKS} -->
+
+<!-- works %>% -->
+<!--   detailed_entries( -->
+<!--     with = area, -->
+<!--     what = accomplishment, -->
+<!--     why = detail, -->
+<!--     when = year, -->
+<!--     where = where -->
+<!--   ) -->
+
+<!-- ``` -->
+
+<!-- \pagebreak -->
+
+# Certifications
+
+```{r CERTIFICATIONS}
+ 
+certifications %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+
+```
